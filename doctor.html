@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/doctor.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <title>Doctors</title>
+</head>
+
+<body onload="loadDoctor()">
+  <header>
+    <h1>Hospital Management</h1>
+</header>
+<nav class="navbar navbar-expand-sm bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Hospital</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="dashbord.html ">Home</a>
+                <a class="nav-link" href="patient.html">Patients</a>
+                <a class="nav-link" href="doctor.html">Doctors</a>
+                <a class="nav-link" href="appoinment.html">Appointments</a>
+                <a class="nav-link" onclick="billing()">Billing and Invoicing</a>
+                <a class="nav-link" href="inventory.html">Medicine Inventory</a>
+                <div class="dropdown">
+                  <button class="nav-link">Reports</button>
+                  <div class="dropdown-content">
+                    <a href="patient_report.html">Doctor records</a>
+                    <a href="billing_report.html">Billing reports</a>
+                    <a href="appointment_report.html">Appointment schedules</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+  <div class="main-inner">
+    <div class="row">
+      <div class="col-12 col-sm-8 col-md-8 left-side">
+        
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Name</th>
+                <th>Specialization</th>
+                <th>Phone</th>
+                <th>Availability</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody id="table-body">
+    
+            </tbody>
+        </table>
+      </div>
+      <div class="col-10 col-sm-4 col-md-4  right-side">
+        <div class="card-background">
+            <div class="card-registration">   
+            
+                
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Doctors Registration Form</h3>
+                
+              <div class="row">
+                <div class="col-md-12 mb-4">
+  
+                  <div class="form-outline">
+                    <label class="form-label" for="fullName">Full Name</label>
+                    <input type="text" id="firstName" class="form-control form-control-sm" placeholder="ex:malith perera" required/>
+  
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-12 mb-4">
+  
+                  <div class="form-outline">
+                    <label class="form-label" for="initialsName">Name with Initials</label>
+                    <input type="text" id="inName" class="form-control form-control-sm" placeholder="ex: M perera"/>
+  
+                  </div>
+                </div>
+                
+              </div>
+  
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 d-flex  ">
+                  <label for="specialization" class="form-label select-label">Specialization  :</label>
+                  <select id="specialization" name="specialization" class="col-7 select form-control-md" required>
+                        <option value="General medicine">General medicine</option>
+                        <option value="Surgeon">Surgeon</option>
+                        <option value="Anesthesiologist">Anesthesiologist</option>
+                        <option value="Radiologist">Radiologist</option>
+                        <option value="Internist">Internist</option>
+                        <option value="Family Medicine Physician">Family Medicine Physician</option>
+                        <option value="Ophthalmologist">Ophthalmologist</option>
+                        <option value="Pharmacist">Pharmacist</option>
+                    </select>
+                      
+
+                </div>
+              </div>
+            <br>
+
+              
+                
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+  
+                  <div class="form-outline">
+                    <label class="form-label" for="emailAddress">Email</label>
+                    <input type="email" id="email" class="form-control form-control-md" />
+  
+                  </div>
+  
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+  
+                  <div class="form-outline">
+                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control form-control-md" />
+  
+                  </div>
+  
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-4">
+
+                    <h6 for="availability" class="mb-2 pb-1">Today Availability : </h6>
+    
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="availability" id="yes"
+                        value="yes" checked />
+                      <label class="form-check-label" for="yes">Yes</label>
+                    </div>
+    
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="availability" id="no"
+                        value="no" />
+                      <label class="form-check-label" for="no">No</label>
+                    </div>
+                  </div>
+              </div>
+              
+  
+              <div class="form-group">
+                <button class="col-12 col-sm-12 col-md-12 btn btn-primary" onclick="createPatient()">Register Doctor</button>
+                <br />
+                <br />
+              </div>
+              <div class="form-group">
+                <button class="col-12 col-sm-12 col-md-12 btn btn-dark" onclick="updateRecord()">Update</button>
+              </div>
+             
+            </div>
+          
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="script/firebaseConfig.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="script/doctor.js"></script>
+  <script src="script/validate_form.js"></script>
+</body>
+
+</html>

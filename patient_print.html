@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/patient_print.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Doctor Report</title>
+</head>
+<body onload="loadData()">
+    <header>
+        <div class="row">
+            <div class="col-3">
+                <img src="https://i.pinimg.com/originals/00/92/e1/0092e1938f039465ed0cde1ac3a9768c.png" alt="lg-left">
+            </div>
+            <div class="col-6">
+                <h1>ABC Hospital</h1>
+                <p>Vimaladharma mawatha,<br/>101 E. perera Rd<br>Colombo 2</p>
+                <p>011 234567</p>
+            </div>
+            <div class="col-3">
+                <img src="https://i.pinimg.com/originals/00/92/e1/0092e1938f039465ed0cde1ac3a9768c.png" alt="lg-right">
+            </div>
+        </div>
+        
+            
+    </header>
+    <div class="inv">
+        <h1>Doctor Reports</h1>
+    </div>
+    <hr>
+    <div class="row search">
+        <h4>Details of Doctor</h4>
+        <div class="col-sm-6 col-md-3 pb-3">
+
+            <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" class="form-control form-control-sm" disabled />
+
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 pb-3">
+
+            <label class="form-label" for="addr">Specialization</label>
+            <input type="text" id="special" class="form-control form-control-sm" disabled />
+
+        </div>
+        <div class="col-12 col-sm-6 col-md-2">
+
+            <label class="form-label" for="bd">Phone Number</label>
+            <input type="text" id="phone" class="form-control form-control-sm" disabled />
+
+        </div>
+        <div class="col-12 col-sm-6 col-md-2">
+
+            <label class="form-label" for="age">Email</label>
+            <input type="text" id="email" class="form-control form-control-sm" disabled />
+
+        </div>
+       
+        
+        <div class="col-12 col-sm-6 col-md-1">
+
+            <label class="form-label" for="date"><strong>Print Date</strong></label>
+            <input type="text" id="printdate" class="form-control form-control-sm" disabled />
+
+        </div>
+        <div class="col-12 col-sm-6 col-md-2">
+
+            <label class="form-label" for="ttlAppo"><strong>Total Patients</strong></label>
+            <input type="text" id="ttlAppo" class="form-control form-control-sm" disabled />
+
+        </div>
+        
+    </div>
+    <hr>
+    <div class="col-12 col-sm-12 col-md-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#Id</th>
+                    <th>Patient Name</th>
+                    <th>App. Date</th>
+                    <th>Room</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="search-table-body">
+    
+            </tbody>
+        </table>
+      </div>
+    
+
+    
+    <footer class="container-fluid text-center">
+        <h5>Thank You!</h5>
+    </footer>
+
+
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="script/firebaseConfig.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="script/patient_print.js"></script>
+    <script src="script/patint_report.js"></script>
+</body>
+</html>

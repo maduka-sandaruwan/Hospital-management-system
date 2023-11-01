@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/billing_report.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+        <title>Billing Reports</title>
+    </head>
+    
+    <body onload="clearField()">
+        <header>
+            <h1>Hospital Dashboard</h1>
+        </header>
+        <nav class="navbar navbar-expand-sm bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Hospital</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="dashbord.html ">Home</a>
+                        <a class="nav-link" href="patient.html">Patients</a>
+                        <a class="nav-link" href="doctor.html">Doctors</a>
+                        <a class="nav-link" href="appoinment.html">Appointments</a>
+                        <a class="nav-link" onclick="billing()">Billing and Invoicing</a>
+                        <a class="nav-link" href="inventory.html">Medicine Inventory</a>
+                        <div class="dropdown">
+                            <button class="nav-link">Reports</button>
+                            <div class="dropdown-content">
+                              <a href="patient_report.html">Doctor records</a>
+                              <a href="billing_report.html">Billing reports</a>
+                              <a href="appointment_report.html">Appointment schedules</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <hr>
+        <div class="main-content">
+        <div class="row search" id="search-row">
+            
+            <div class="col-md-3 bar left-bar">
+                <h5>Select Billing Date :</h5>
+                <input type="date" id="sdate" class="form-control form-control-sm"/><br>
+                <input type="date" id="edate" class="form-control form-control-sm"/><br>
+                
+                <div class="col-12 button-line">
+                <button class="col-12  mb-3  btn btn-success" onclick="loadData()">Search</button>
+                </div>
+                <h5>Patient Name :</h5>
+                <select id="patientSelect" class="form-control form-control-sm">
+                    
+                </select><br>
+                
+                <div class="col-12 button-line">
+                <button class="col-12  mb-3  btn btn-success" onclick="loadPatient()">Search</button>
+                <button class="col-12  mb-3 btn btn-primary printReport" onclick="printPageArea('printReport')">Print Report</button>
+                </div>
+            </div>
+            <div class="col-md-9 bar right-bar" id="printReport">
+                <header class="header-tem">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://i.pinimg.com/originals/00/92/e1/0092e1938f039465ed0cde1ac3a9768c.png" alt="lg-left">
+                        </div>
+                        <div class="col-6">
+                            <h1>ABC Hospital</h1>
+                            <p>Vimaladharma mawatha,<br/>101 E. perera Rd<br>Colombo 2</p>
+                            <p>011 234567</p>
+                        </div>
+                        <div class="col-3">
+                            <img src="https://i.pinimg.com/originals/00/92/e1/0092e1938f039465ed0cde1ac3a9768c.png" alt="lg-right">
+                        </div>
+                    </div>
+                </header>
+                <div class="inv">
+                    <h1>Billing Reports</h1>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="col-12 mb-2">
+                            <span>From :</span>
+                            <span id="from"></span><br>
+                            <!-- <input type="text" id="from" class="form-control-sm col-md-3" disabled> -->
+                            <span>To :</span>
+                            <span id="to"></span>
+                            <!-- <input type="text" id="to" class="form-control-sm col-md-3" disabled> -->
+                            
+                        </div>
+                        <div class="col-12">
+                            <span>Patient Name :</span>
+                            <span id="pName"></span>
+                            <!-- <input type="text" id="pName" class="form-control-sm col-md-4" disabled> -->
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-4">
+                        <div class="col-12">
+                            <span>Total Bill :</span>
+                            <span id="ttlBill"></span>
+                            <!-- <input type="text" id="ttlBill" class="form-control-sm col-md-4 mb-2" disabled> -->
+                        </div>
+                        <div class="col-12">
+                            <span>Total Amount :</span>
+                            <span id="ttlAmount"></span>
+                            <!-- <input type="text" id="ttlAmount" class="form-control-sm col-md-4" disabled> -->
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-12 col-sm-12 col-md-12">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Doctor Name</th>
+                            <th>App. Date</th>
+                            <th>Bill Date</th>
+                            <th>Total Bill(Rs.)</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody id="bill-table-body">
+                
+                        </tbody>
+                    </table>
+                  </div>
+                  <footer class="container-fluid text-center">
+                    <h5>Thank You!</h5>
+                  </footer>
+            </div>
+        </div>
+        </div>
+        <br>
+        
+        
+
+
+
+
+
+
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="script/firebaseConfig.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="script/billing_report.js"></script>  
+        <script src="script/validate_form.js"></script>     
+        
+</body>
+</html>

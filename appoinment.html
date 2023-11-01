@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Appointment</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/appointment.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      </head>
+
+<body onload="loadAppo()">
+  <header>
+    <h1>Hospital Management</h1>
+</header>
+<nav class="navbar navbar-expand-sm bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Hospital</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="dashbord.html ">Home</a>
+                <a class="nav-link" href="patient.html">Patients</a>
+                <a class="nav-link" href="doctor.html">Doctors</a>
+                <a class="nav-link" href="appoinment.html">Appointments</a>
+                <a class="nav-link" onclick="billing()">Billing and Invoicing</a>
+                <a class="nav-link" href="inventory.html">Medicine Inventory</a>
+                <div class="dropdown">
+                    <button class="nav-link">Reports</button>
+                    <div class="dropdown-content">
+                      <a href="patient_report.html">Doctor records</a>
+                      <a href="billing_report.html">Billing reports</a>
+                      <a href="appointment_report.html">Appointment schedules</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="row line-bar">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary col-6 col-sm-6 col-sm-4" data-toggle="modal" data-target="#registrationModal">
+          New Appointment
+        </button>
+      </div>
+      <div class="col-md-6">
+        <label class="sdate" for="sdate">Select Date:</label>
+        <input type="date" class="col-10 col-sm-3 col-md-4" id="sdate" >
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="modal fade modal-main" id="registrationModal">
+        <div align="center" class="col-12 col-md-8 modal-dialog "  >
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Appointments</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+              <!-- Registration Form Here -->
+              
+                <div class="row">
+                <div class="col-md-6 form-group">
+                  <label for="patien">Patient Name:</label><br>
+                  <select id="patientSelect" class="form-control">
+                    
+                  </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="docto">Doctor Name:</label><br>
+                    <select id="doctorSelect" class="form-control">
+                        
+                    </select>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label for="date">Appointment Date:</label>
+                      <input type="date" class="form-control" id="date" onchange="validateDateOnChange(this)">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="room" class="form-label select-label">Room No:</label>
+                        <select id="room" name="room" class="col-12 select form-control-md" required>
+                            <option value="Room 1">Room 1</option>
+                            <option value="Room 2">Room 2</option>
+                            <option value="Room 3">Room 3</option>
+                            <option value="Room 4">Room 4</option>
+                            <option value="Room 5">Room 5</option>
+                            <option value="Room 6">Room 6</option>
+                            <option value="Room 7">Room 7</option>
+                            <option value="Room 8">Room 8</option>
+                            <option value="Room 9">Room 9</option>
+                            <option value="Room 10">Room 10</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label for="stime">Start Time:</label>
+                      <input type="time" class="form-control" id="stime" >
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="etime">End Time:</label>
+                        <input type="time" class="form-control" id="etime">
+                    </div>
+                </div>
+                <div class="row payment">
+                    <div class="col-md-6 form-group">
+                        <label for="payment" class="form-label select-label">Payment Method:</label>
+                        <select id="payment" name="room" class="col-12 select form-control-md" required>
+                            <option value="Cash">Cash</option>
+                            <option value="Online">Online</option>
+                            <option value="Card ">Card</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                
+                
+                <!-- Add more form fields as needed -->
+                <div class="row">
+                    <button class="col-6 col-md-3 col-sm-3 btn btn-primary" onclick="createAppointment()">Register</button>
+                </div>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- ================================tanle==========================-->
+      <div class="col-6 col-sm-11 col-md-11">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>App. Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Room</th>
+                <th>Payment</th>
+            </tr>
+            </thead>
+            <tbody id="appo-table-body">
+    
+            </tbody>
+        </table>
+      </div>
+
+      
+      
+      
+    
+  
+
+
+
+      
+
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script/firebaseConfig.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="script/appointment.js"></script>
+    <script src="script/validate_form.js"></script>
+</body>
+
+</html>

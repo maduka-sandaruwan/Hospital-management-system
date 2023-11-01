@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/patient.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <title>Patient</title>
+</head>
+
+<body onload="loadPatient()">
+  <header>
+    <h1>Hospital Management</h1>
+</header>
+<nav class="navbar navbar-expand-sm bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Hospital</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="dashbord.html">Home</a>
+                <a class="nav-link" href="patient.html">Patients</a>
+                <a class="nav-link" href="doctor.html">Doctors</a>
+                <a class="nav-link" href="appoinment.html">Appointments</a>
+                <a class="nav-link" onclick="billing()">Billing and Invoicing</a>
+                <a class="nav-link" href="inventory.html">Medicine Inventory</a>
+                <div class="dropdown">
+                  <button class="nav-link">Reports</button>
+                  <div class="dropdown-content">
+                    <a href="patient_report.html">Doctor records</a>
+                    <a href="billing_report.html">Billing reports</a>
+                    <a href="appointment_report.html">Appointment schedules</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+  <div class="main-inner">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 left-side">
+        <div class="card-background">
+          <div class="card-registration">
+          
+            <h3 class="mb-4 pb-1 pb-md-0 mb-md-5">Patient Registration Form</h3>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+
+                <div class="form-outline">
+                  <label class="form-label" for="firstName">First Name</label>
+                  <input type="text" id="firstName" class="form-control form-control-md" required/>
+                  <span></span>
+
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+
+                <div class="form-outline">
+                  <label class="form-label" for="lastName">Last Name</label>
+                  <input type="text" id="lastName" class="form-control form-control-md" required/>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                <div class="form-outline w-100">
+                  <label for="birthdate" class="form-label">Birthday</label>
+                  <input type="date" class="form-control form-control-md" id="birthdate" required/>
+
+                </div>
+
+              </div>
+              <div class="col-md-6 mb-4">
+
+                <h6 class="mb-2 pb-1">Gender: </h6>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                    value="female" checked />
+                  <label class="form-check-label" for="femaleGender">Female</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                    value="male" />
+                  <label class="form-check-label" for="maleGender">Male</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="otherGender"
+                    value="other"/>
+                  <label class="form-check-label" for="otherGender">Other</label>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-4 col-md-4">
+                <span>Your age is :</span>
+            </div>
+            <div class="col-sm-3 col-md-3">
+              <input type="text" disabled class="form-control" id="age">
+          </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4 pb-1">
+
+                <div class="form-outline">
+                  <label class="form-label" for="emailAddress">Email</label>
+                  <input type="email" id="email" class="form-control form-control-md" />
+
+                </div>
+
+              </div>
+              <div class="col-md-6 mb-4 pb-1">
+
+                <div class="form-outline">
+                  <label class="form-label" for="phoneNumber">Phone Number</label>
+                  <input type="tel" id="phone" class="form-control form-control-md" />
+
+                </div>
+
+              </div>
+              <div class="col-md-12 mb-12 pb-1">
+
+                <div class="form-outline">
+                  <label class="form-label" for="address">Address</label>
+                  <input type="text" id="address" class="form-control form-control-md" placeholder="Address"/>
+
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 pb-2">
+                <label class="form-label" for="medical">Medical history</label>
+                <textarea id="freeform" name="freeform" rows="3" maxlength="200" placeholder="...text...">
+                  
+                </textarea>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mb-4 pb-2">
+                  <label class="form-label" for="medical">Attach your past medical repots</label>
+                  <input type="file" id="myFile" name="filename">
+              
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <button class="col-12 col-sm-12 col-md-12 btn btn-primary" onclick="createPatient()">Register Patient</button>
+              <br />
+              <br />
+            </div>
+            <div class="form-group">
+              <button class="col-12 col-sm-12 col-md-12 btn btn-dark" onclick="updateRecord()">Update</button>
+            </div>
+           
+          </div>
+          <hr>
+          
+          <div class="col-lg-8" align="center">		
+            <svg style="display:none" id="barcode"></svg> 
+          </div>
+          <br>
+          <button class="col-12 col-sm-12 col-md-12 btn btn-success" onclick="downloadBarcode()">Download</button>
+        
+        </div>
+         
+      </div>
+      <div class="col-12 col-sm-7 col-md-7  right-side">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+              <th>#Id</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Contact</th>
+              <th>Options</th>
+          </tr>
+          </thead>
+          <tbody id="table-body">
+  
+          </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.3/JsBarcode.all.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="script/firebaseConfig.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="script/patient.js"></script>
+  <script src="script/validate_form.js"></script>
+</body>
+
+</html>

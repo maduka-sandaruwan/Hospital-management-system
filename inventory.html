@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/inventory.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <title>Inventory</title>
+      </head>
+      
+      <body onload="loadInventory()">
+        <header>
+          <h1>Hospital Management</h1>
+      </header>
+      <nav class="navbar navbar-expand-sm bg-body-tertiary">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="#">Hospital</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                      <a class="nav-link active" aria-current="page" href="dashbord.html ">Home</a>
+                      <a class="nav-link" href="patient.html">Patients</a>
+                      <a class="nav-link" href="doctor.html">Doctors</a>
+                      <a class="nav-link" href="appoinment.html">Appointments</a>
+                      <a class="nav-link" onclick="billing()">Billing and Invoicing</a>
+                      <a class="nav-link" href="inventory.html">Medicine Inventory</a>
+                      <div class="dropdown">
+                        <button class="nav-link">Reports</button>
+                        <div class="dropdown-content">
+                          <a href="patient_report.html">Doctor records</a>
+                          <a href="billing_report.html">Billing reports</a>
+                          <a href="appointment_report.html">Appointment schedules</a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </nav>
+      <hr>
+      <div class="add-item" id="addItem">
+          <label for="add-items"><h3>Add Medicine Items</h3></label>
+          <div class="row">
+            <div class="col-md-2">
+              
+                <label class="form-label" for="medicineName">Medicine Name</label>
+                <input type="text" id="medicineName" class="form-control form-control-sm" placeholder="ex:Beclomin 50g" required/>
+            </div>
+            <div class="col-md-2">
+              
+                <label class="form-label" for="qty">Received Quantity</label>
+                <input type="number" id="qty" class="form-control form-control-sm" placeholder="ex:10" onfocusout="qtyValidate()" required/>
+                <span id="qtyError"></span>
+            </div>
+            <div class="col-md-2">
+              
+                <label class="form-label" for="expDate">Expiry Date</label>
+                <input type="date" id="expDate" class="form-control form-control-sm" placeholder="ex:2023-10-03" required/>
+            
+            </div>
+            <div class="col-md-2">
+              
+                <label class="form-label" for="unitPrice">Unit Price</label>
+                <input type="text" id="unitPrice" class="form-control form-control-sm" placeholder="ex:50" required/>
+            
+            </div>
+            <div class="col-md-4">
+                <br>
+                <button class="col-12 col-md-3 col-sm-3 btn btn-warning" onclick="addItem()">Add</button>
+                <button class="col-12 col-md-3 col-sm-3 btn btn-success" onclick="updateRecord()">Update</button>
+            </div>
+            
+           </div>
+      </div>
+      <hr>
+      <!-- ================================tanle==========================-->
+      <div class="col-12 col-sm-12 col-md-12">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Exp Date</th>
+                <th>Received Quantity</th>
+                <th>Blance Qty</th>
+                <th>Unit Price</th>
+                <th>Option</th>
+                
+            </tr>
+            </thead>
+            <tbody id="inventory-table-body">
+    
+            </tbody>
+        </table>
+      </div>
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script/firebaseConfig.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="script/inventory.js"></script>
+    <script src="script/validate_form.js"></script>
+    
+</body>
+</html>

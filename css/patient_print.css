@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 5px;
+}
+header {
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+        /* min-height: 250px; */
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        
+        
+}
+.inv{
+    text-align: center;
+}
+
+
+header img{
+    width: 100px;
+    float: center;
+    margin-top: 20px;
+}
+/* ============================================================== */
+.search{
+    margin-left: 30px !important;
+}
+
+
+
+
+
+/* ================================================================== */
+footer{
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+        /* min-height: 250px; */
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
