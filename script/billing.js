@@ -60,13 +60,20 @@ const addToBill=()=>{
      
 
   }
+  if (!isValidUserData(billObj)) {
+    Swal.fire("Error", "Please fill in all fields.", "error");
+    return;
+  }
+  
   medicineBal();
   let medicineBalQty=parseInt(0);
   medicineBalQty=parseInt($('#balQty').val())-parseInt($('#quantity').val());
   if (medicineBalQty <= 0){
     Swal.fire("Error", "Please check medice quantity", "error");
+    clearData();
     return;
   }
+  
   bill.push(billObj);
   $('#billing-table-body').empty();
 
@@ -96,6 +103,10 @@ const addServiceToBill=()=>{
      "total":$('#price').val(),
      "quantity":"0",
 
+  }
+  if (!isValidUserData(billObj)) {
+    Swal.fire("Error", "Please fill in all fields.", "error");
+    return;
   }
   bill.push(billObj);
   $('#billing-table-body').empty();
